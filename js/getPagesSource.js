@@ -37,7 +37,11 @@ function toDelete(htmlString){
 	//if the phrase isn't detected
 	if (n == -1){
 		n = htmlString.search("addtocart");
-	} 
+	}
+    if (n == -1){
+        n = htmlString.search("add to bag")
+    } 
+
 	if (n == -1){
 		console.log("clean page");
 		return false;
