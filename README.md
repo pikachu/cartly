@@ -13,3 +13,5 @@ Install link coming soon... Still need to test a little.
 <hr>
 <h3>How does it work?</h3>
 The extension iterates through each tab and just takes all of the html. It searches the entire string (after .toLowerCase()) looking for the text "add to cart" or "addtocart". If detected, the tab is deleted.
+<hr>
+<img src = "icons/icon.png" width = "200px">
