@@ -9,7 +9,11 @@ So, <b>Cartly</b> was born.
 This extension closes all tabs that have the text "add to cart" in its html. Those of you who have a little bit a shopaholic problem (no judgement), this is your solution! When you have that "I need to get back on task moment!", just click the button in the popup to close all your tabs that are obviously shopping-related. 
 <hr>
 <h3>Install</h3>
-Install link coming soon... Still need to test a little.
+Check out <a href = "https://chrome.google.com/webstore/detail/cartly/acmjoaimcekbaifheokfjpkedfhjaeeo">this</a> link!<br>
+Or type this in terminal: 
+<code>
+git clone https://github.com/imparikh/cartly
+</code>
 <hr>
 <h3>How does it work?</h3>
 The extension iterates through each tab and just takes all of the html. It searches the entire string (after .toLowerCase()) looking for the text "add to cart" or "addtocart". If detected, the tab is deleted.
