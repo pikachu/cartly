@@ -30,7 +30,8 @@ function closeTab(id) {
   chrome.tabs.executeScript(id, {"file": "js/getPagesSource.js"}, function(x){
     console.log('Sending tab #'  + id + ' to the script.');
     if (x[0]){
-      closer(id);
+      console.log("Tab could be closed.")
+      checker(id);
     } else {
      console.log("Tab does not need to be closed.")
    }
@@ -42,6 +43,29 @@ function closeTab(id) {
 });
 }
 
+
+function checker(id){
+  console.log("In checker with id " + id)
+  var shouldDelete = true;
+    chrome.tabs.get(id, function (tab){
+      url = tab.url;
+      for (var i = 0; i < blacklist.length; i ++){
+        if (url.search(blacklist[i]) == -1){
+          console.log("not " + blacklist[i])
+          if (blacklist[i] == "github.com"){
+            closer(id);
+            console.log("Deleting page.")
+          }
+        }
+        else{
+          shouldDelete = false;
+          console.log("Blacklisted page! " + blacklist[i])
+          break;
+        }
+
+      }
+  })
+}
 // The function to actually close your tab.
 function closer(id){
   chrome.tabs.remove(id, function() {
@@ -49,6 +73,8 @@ function closer(id){
     console.log(id);
   });
 }
+
+blacklist = ["google.com", "stackoverflow.com", "facebook.com", "twitter.com", "github.com"]
 
 
 
