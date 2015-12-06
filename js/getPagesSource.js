@@ -32,27 +32,25 @@ function DOMtoString(document_root) {
 
 //Returns true if add to cart is detected
 function toDelete(htmlString){
-	var n = htmlString.search("add to cart");
-
-	//if the phrase isn't detected
-	if (n == -1){
-		n = htmlString.search("addtocart");
-	}
-    if (n == -1){
-        n = htmlString.search("add to bag")
-    } 
-
-	if (n == -1){
-		console.log("clean page");
-		return false;
-
+	var n = []
+    n[0] = htmlString.search("add to cart");
+	n[1] = htmlString.search("addtocart");
+    n[2] = htmlString.search("add to bag");
+    n[3] = htmlString.search("add to my cart");
+    n[4] = htmlString.search("add to my bag");
 	
-	} else {
-        console.log(n)
-		return true;
-	}
+    return arrayChecker(n);
 }
 
+function arrayChecker(n){
+    for (var i = 0; i < n.length; i ++){
+        if (n[i] != -1)
+            return true;
+        if (i == n.length - 1 && n[i] == -1)
+            return false;
+    }
+}
+ 
 //Because of the chrome.tabs.executeScript
 returner = DOMtoString(document);
 returner;

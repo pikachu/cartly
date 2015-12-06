@@ -1,0 +1,32 @@
+$main-color: red;
+$alert-color: red;
+$warning-color: yellow;
+
+article {
+	border-right: solid 0.2em $main-color;
+
+	h1 {
+		color: $main-color;
+	}
+	
+	p {
+		margin: 1em 0;
+	}
+}
+
+@mixin message($color: none) {
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 1em;
+	padding: 1em;
+	border-color: $color
+}
+.message {
+	&.alert {
+		@include message($alert-color);
+	}
+
+	&.warning {
+		@include message($warning-color);
+	}
+}
